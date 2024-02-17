@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="garden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Clash Own</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Protest+Riot&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom css -->
+    <style>
+        .poppins-font {
+            font-family: "Poppins", sans-serif;
+            font-style: normal;
+        }
+
+        .protest-font {
+            font-family: "Protest Riot", sans-serif;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body class="h-screen bg-[url('./images/background.png')] bg-no-repeat bg-center poppins-font text-black">
+    <div class="absolute top-0 left-1/2 h-0 -translate-x-1/2 flex-col justify-center items-center text-xl container p-2 md:p-6 lg:p-10 space-y-4 bg-gradient-to-t from-[#34fafa] to-[#61611b] text-white text-justify z-10 instructor hidden"
+        id="instruction">
+        <span
+            class="absolute text-2xl top-0 left-1/2 -translate-x-1/2 p-4 text-slate-400 hover:text-white hover:scale-150 transition duration-700 cursor-pointer"
+            onclick="hide()">&times;</span>
+        <p>This is make for only increase your typing speed</p>
+        <p>You can start your game by pressing <code>Ctrl+Enter</code> or <code>Start Now</code> button</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, velit voluptatum ut incidunt harum natus
+            tempore! Sapiente dolorum sit, tenetur, maxime nam et nostrum sed, quibusdam explicabo doloribus soluta
+            officia.</p>
+    </div>
+    <!-- section intro -->
+    <section class="h-full flex-col gap-4 items-center justify-center flex" id="intro">
+        <h1 class="text-xl md:text-3xl lg:text-5xl font-black">Explore your alphabet clash</h1>
+        <p class="md:text-2xl lg:text-4xl">You can play Kung-fu game with your keyboard</p>
+        <button class="btn btn-primary text-2xl" onclick="startNow()">Start Now</button>
+        <button class="btn btn-primary" onclick="instruction()">Instruction</button>
+        <button class="btn btn-primary" onclick="about()">About</button>
+    </section>
+    <section class="h-full flex-col gap-4 items-center justify-center hidden" id="play-ground">
+        <!-- playground -->
+        <div
+            class="flex justify-center items-center w-7/12 h-64 border-[15px] border-[#2c2c83cc] bg-[#FFFFFFB3] rounded-2xl">
+            <span class="font-semibold lg:text-5xl uppercase" id="output">p</span>
+        </div>
+
+        <div class="lg:text-2xl">
+            <div class="flex justify-center gap-1 my-1 w-full">
+                <kbd id="q" class="kbd">q</kbd>
+                <kbd id="w" class="kbd">w</kbd>
+                <kbd id="e" class="kbd">e</kbd>
+                <kbd id="r" class="kbd">r</kbd>
+                <kbd id="t" class="kbd">t</kbd>
+                <kbd id="y" class="kbd">y</kbd>
+                <kbd id="u" class="kbd">u</kbd>
+                <kbd id="i" class="kbd">i</kbd>
+                <kbd id="o" class="kbd">o</kbd>
+                <kbd id="p" class="kbd">p</kbd>
+            </div>
+            <div class="flex justify-center gap-1 my-1 w-full">
+                <kbd id="a" class="kbd">a</kbd>
+                <kbd id="s" class="kbd">s</kbd>
+                <kbd id="d" class="kbd">d</kbd>
+                <kbd id="f" class="kbd">f</kbd>
+                <kbd id="g" class="kbd">g</kbd>
+                <kbd id="h" class="kbd">h</kbd>
+                <kbd id="j" class="kbd">j</kbd>
+                <kbd id="k" class="kbd">k</kbd>
+                <kbd id="l" class="kbd">l</kbd>
+            </div>
+            <div class="flex justify-center gap-1 my-1 w-full">
+                <kbd id="z" class="kbd">z</kbd>
+                <kbd id="x" class="kbd">x</kbd>
+                <kbd id="c" class="kbd">c</kbd>
+                <kbd id="v" class="kbd">v</kbd>
+                <kbd id="b" class="kbd">b</kbd>
+                <kbd id="n" class="kbd">n</kbd>
+                <kbd id="m" class="kbd">m</kbd>
+                <kbd id="/" class="kbd">/</kbd>
+            </div>
+        </div>
+        <div class="container flex justify-between">
+
+            <div
+                class="bg-[#894189] rounded-[40px] lg:text-2xl px-6 py-2 lg:py-4 text-white flex gap-2 items-center justify-center">
+                <span>Life:</span><span><img src="./images/heart.svg" alt=""></span>
+                <span id="your-life">5</span>
+            </div>
+            <div
+                class="bg-[#360490] rounded-[40px] lg:text-2xl px-6 py-2 lg:py-4 text-white flex gap-2 items-center justify-center">
+                <span>Score:</span><span><img src="./images/doller.svg" alt=""></span> <span id="your-score">0</span>
+            </div>
+        </div>
+    </section>
+    <section class="h-screen flex items-center justify-center hidden" id="final-section">
+        <!-- live score -->
+        <div
+            class="space-y-3 bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center flex-col p-10 rounded-2xl text-white">
+            <h1 class="text-3xl protest-font">Game Over!</h1>
+            <h1><span class="font-black text-2xl">Score: <span id="final-score">0</span> </span>
+            </h1>
+            <button class="btn" onclick="playAgain()">Play Again</button>
+            <button onclick="home()" class="btn">Go Home</button>
+            <p>Practice will make you pro</p>
+        </div>
+    </section>
+    <script src="./scripts/utility.js"></script>
+    <script src="./scripts/app.js"></script>
+
+</body>
+
+</html>
